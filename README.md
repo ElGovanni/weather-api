@@ -3,6 +3,8 @@ This application integrates Musement's API with [WeatherApi](https://www.weather
 
 * Author: [Stefan Touhami](https://touhami.pl)
 
+![example workflow](https://github.com/elgovanni/weather-api/actions/workflows/ci.yml/badge.svg)
+
 ## Requirements
 * [Git](https://git-scm.com/downloads)
 * [Docker](https://docs.docker.com/install) and [Docker Compose](https://docs.docker.com/compose/install)
