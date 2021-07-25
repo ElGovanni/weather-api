@@ -39,3 +39,36 @@ jobs:
 
       - name: Install Composer dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Check coding standard
+        run: composer ecs
+
+      - name: Static analysis
+        run: composer stan
+
+      - name: Run tests & generate coverage
+        run: composer tests:coverage
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: coverage-html
+          path: ./var/coverage-report
+
+  deploy:
+    name: Deploy tests coverage 🚀
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    needs: test
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@master
+        with:
+          name: coverage-html
+          path: ./var/coverage-report
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          publish_dir: ./var/coverage-report
