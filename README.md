@@ -28,3 +28,36 @@ Via php bash we will install dependencies
 composer install
 ```
 
+## Tests
+You should enter into docker php container using command below before you are going to execute rest of test commands below.
+
+```bash
+docker-compose exec php bash
+```
+
+### Unit
+Master branch tests coverage report is available on [project github page](https://elgovanni.github.io/weather-api)
+
+```bash
+composer tests
+```
+Execute this to run tests and generate coverage report.
+```bash
+composer tests:coverage
+```
+
+### Coding standard
+Below command check coding standards in src and tests directory.
+
+```bash
+composer ecs
+```
+
+### Static code analysis
+Static analysis using PHPStan tool to find errors before run app.
+
+```bash
+composer stan
+```
+
+
