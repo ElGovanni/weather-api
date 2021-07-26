@@ -5,3 +5,5 @@ framework:
         base_uri: '%env(WEATHER_API_URI)%'
         query:
           key: '%env(WEATHER_API_KEY)%'
+      musement.client:
+        base_uri: '%env(MUSEMENT_API_URI)%'
