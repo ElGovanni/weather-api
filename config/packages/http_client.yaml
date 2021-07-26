@@ -1,0 +1,7 @@
+framework:
+  http_client:
+    scoped_clients:
+      weather.client:
+        base_uri: '%env(WEATHER_API_URI)%'
+        query:
+          key: '%env(WEATHER_API_KEY)%'
