@@ -1,0 +1,7 @@
+framework:
+    messenger:
+        buses:
+            query.bus: ~
+        transports:
+            sync: 'sync://'
+

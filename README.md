@@ -28,6 +28,23 @@ Via php bash we will install dependencies
 composer install
 ```
 
+## Configuration
+For proper operation of the application, you need to add an environment variable with your [WeatherApi key](https://www.weatherapi.com) using command below but with your key instead of `<YOUR_API_KEY>`.
+```bash
+echo "WEATHER_API_KEY=<YOUR_API_KEY>" > .env.local
+```
+Or if you want to avoid bash just create new file .env.local with `WEATHER_API_KEY=<YOUR_API_KEY>` in root project directory.
+
+## Usage
+To display forecast for cities from Musement's API execute below command inside php container
+```bash
+symfony console app:forecast 
+```
+You can change default 2 days of forecast to other in range 1:3 by using argument days, for example:
+```bash
+symfony console app:forecast 3
+```
+
 ## Tests
 You should enter into docker php container using command below before you are going to execute rest of test commands below.
 
