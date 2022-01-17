@@ -15,17 +15,11 @@ To install application you have to execute few commands
 ```bash
 git clone git@github.com:ElGovanni/weather-api.git
 cd weather-api
-docker-compose up
 ```
 
-Now we have to jump into php container using
+Install composer dependencies
 ```bash
-docker-compose exec php bash
-```
-
-Via php bash we will install dependencies
-```bash
-composer install
+docker-compose run --rm composer install
 ```
 
 ## Configuration
@@ -38,43 +32,39 @@ Or if you want to avoid bash just create new file .env.local with `WEATHER_API_K
 ## Usage
 To display forecast for cities from Musement's API execute below command inside php container
 ```bash
-symfony console app:forecast 
+docker-compose run --rm php bin/console app:forecast
 ```
 You can change default 2 days of forecast to other in range 1:3 by using argument days, for example:
 ```bash
-symfony console app:forecast 3
+docker-compose run --rm php bin/console app:forecast 3
 ```
 
 ## Tests
 You should enter into docker php container using command below before you are going to execute rest of test commands below.
 
-```bash
-docker-compose exec php bash
-```
-
 ### Unit
 Master branch tests coverage report is available on [project github page](https://elgovanni.github.io/weather-api)
 
 ```bash
-composer tests
+docker-compose run --rm php bin/phpunit
 ```
 Execute this to run tests and generate coverage report.
 ```bash
-composer tests:coverage
+docker-compose run --rm php bin/phpunit --coverage-html var/coverage-report
 ```
 
 ### Coding standard
 Below command check coding standards in src and tests directory.
 
 ```bash
-composer ecs
+docker-compose run --rm php ./vendor/bin/ecs check
 ```
 
 ### Static code analysis
 Static analysis using PHPStan tool to find errors before run app.
 
 ```bash
-composer stan
+docker-compose run --rm php ./vendor/bin/phpstan analyse
 ```
 
 

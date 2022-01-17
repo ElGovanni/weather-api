@@ -1,7 +1,14 @@
 version: '3.8'
 
 services:
+  composer:
+    image: composer:2
+    environment:
+      - COMPOSER_CACHE_DIR=/app/var/cache/composer
+    volumes:
+      - .:/app
   php:
     build: .docker/php
     volumes:
-      - ./:/app
+      - .:/app
+    working_dir: /app
